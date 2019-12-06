@@ -4,8 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//création de l'instance mongoose et url
+var mongoose = require('mongoose');
+mongoose.Promise=global.Promise;
+const dbName= "DashboardProject";
+const dbURL= `mongodb://localhost:27017/${dbName}`;
+
+//connection à la bdd
+mongoose.connect(dbURL, {useNewUrlParser: true});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var capteursRouter = require('./routes/capteurs');
 
 var app = express();
 
@@ -21,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/capteurs',capteursRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

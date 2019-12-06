@@ -2,12 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-//création de l'instance mongoose et url
-var mongoose = require('mongoose');
-mongoose.Promise=global.Promise;
-const dbName= "DashboardProject";
-const dbURL= mongodb://localhost:27017/${dbName};
-mongoose.connect(dbURL, {useNewUrlParser: true});
+import Navbar from './Navbar.js';
+
+
+const _ =require('bootstrap');
+
+
+
 import Navbar from './Navbar.js';
 import Chart1 from './Chart1.js';
 import Pcircle from "./ProgressCircle";
@@ -27,6 +28,7 @@ class Rendufinale extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-9">
+
 
                         <div id="mainCard" className="card" >
                             <div className="row">
@@ -59,6 +61,7 @@ class Rendufinale extends React.Component{
                     </div>
 
             </div>
+
             </div>
 
         );
