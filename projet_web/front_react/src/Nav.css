@@ -1,0 +1,26 @@
+#globaldiv{
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #00B7FF;
+    font-style: oblique;
+    border-radius: 10px;
+}
+
+.fit-picture{
+    width: 100px;
+    height: 100px;
+    border-radius: 60%;
+}
+
+#home{
+    font-size: x-large;
+    font-style: oblique;
+    margin-top: 25px;
+    margin-bottom: auto;
+
+}
+button{
+    height: 50px;
+    width: 100px
+}
