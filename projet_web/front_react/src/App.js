@@ -2,11 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//création de l'instance mongoose et url
+var mongoose = require('mongoose');
+mongoose.Promise=global.Promise;
+const dbName= "DashboardProject";
+const dbURL= mongodb://localhost:27017/${dbName};
+mongoose.connect(dbURL, {useNewUrlParser: true});
 import Navbar from './Navbar.js';
 import Chart1 from './Chart1.js';
 import Pcircle from "./ProgressCircle";
 import Pie1 from './Pie.js';
 const _ =require('bootstrap');
+
 
 
 
