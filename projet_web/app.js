@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 //création de l'instance mongoose et url
 var mongoose = require('mongoose');
 mongoose.Promise=global.Promise;
@@ -13,10 +14,40 @@ const dbURL= `mongodb://localhost:27017/${dbName}`;
 //connection à la bdd
 mongoose.connect(dbURL, {useNewUrlParser: true});
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var capteursRouter = require('./routes/capteurs');
 
+//Nos 3 routes
+var capteursRouter = require('./routes/capteurs');
+var mesuresRouter = require('./routes/mesures');
+var utilRouter = require('./routes/utilisateurs');
+
+/*
+//import the models
+import User from './models/user.model';
+import Sensors from './models/sensor.model';
+import Measure from './models/measure.model';
+
+const models={User,Sensors,Measure};
+
+app.use(async(req,res,next)=>{
+  req.context={
+    models,
+    me: await models.Sensors.find(),
+  };
+  next();
+});
+*/
+//
+
+var db = mongoose.connection; 
+db.on('error', console.error.bind(console, 'Erreur lors de la connexion')); 
+db.once('open', function (){
+    console.log("Connexion à la base OK");
+    //console.log(db.collection("Sensor").find());
+  });
+    
 var app = express();
 
 // view engine setup
@@ -31,7 +62,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//utilisation de nos 3 routes
 app.use('/capteurs',capteursRouter);
+app.use('/mesures',mesuresRouter);
+app.use('/utilisateurs',utilRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
