@@ -5,12 +5,26 @@ const sensorSchema = new mongoose.Schema(
       _id:  mongoose.Schema.Types.ObjectId,
       creationDate: String,
       location: String,
-      userID: {
+      /*userID: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User'
-      }
+      }*/
+      userID: mongoose.Types.ObjectId
     }
+
   );
+/*
+sensorSchema.statics.findByLogin = async function (login) {
+    let user = await this.findOne({
+        _id: login,
+    });
+    if (!user) {
+        user = await this.findOne({ email: login });
+    }
+    return user;
+};
+*/
+
 /*
 const userSchema= new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
