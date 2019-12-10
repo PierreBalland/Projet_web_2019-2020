@@ -118,3 +118,27 @@ exports.update = (req, res) => {
             });
         });
 };
+
+// Delete a Sensor by id
+exports.delete = (req, res) => {
+    sid=mongoose.Types.ObjectId(req.params.id);
+    Sensors.findByIdAndRemove(sid)
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({
+                    message: 'Sensor not found with id ' + sid
+                });
+            }
+            res.send({ message: 'Sensor deleted successfully!' });
+        })
+        .catch(err => {
+            if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: 'Sensor not found with id ' + sid
+                });
+            }
+            return res.status(500).send({
+                message: 'Could not delete sensor with id ' + sid
+            });
+        });
+};

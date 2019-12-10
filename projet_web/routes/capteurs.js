@@ -11,5 +11,7 @@ router.get('/',Sensors.findAll);
 router.put('/', Sensors.create);
 //update sensor by id
 router.post('/:id', Sensors.update);
+// delete a sensor by id
+router.delete('/:id',Sensors.delete);
 
 module.exports = router;

@@ -115,3 +115,27 @@ exports.update = (req, res) => {
             });
         });
 };
+
+// Delete a user by id
+exports.delete = (req, res) => {
+    uid=mongoose.Types.ObjectId(req.params.id);
+    Users.findByIdAndRemove(uid)
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({
+                    message: 'User not found with id ' + uid
+                });
+            }
+            res.send({ message: 'User deleted successfully!' });
+        })
+        .catch(err => {
+            if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: 'User not found with id ' + uid
+                });
+            }
+            return res.status(500).send({
+                message: 'Could not delete user with id ' + uid
+            });
+        });
+};

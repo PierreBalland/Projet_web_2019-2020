@@ -120,3 +120,27 @@ exports.update = (req, res) => {
             });
         });
 };
+
+// Delete a Measure by id
+exports.delete = (req, res) => {
+    uid=mongoose.Types.ObjectId(req.params.id);
+    Measures.findByIdAndRemove(uid)
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({
+                    message: 'Measure not found with id ' + uid
+                });
+            }
+            res.send({ message: 'Measure deleted successfully!' });
+        })
+        .catch(err => {
+            if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: 'Measure not found with id ' + uid
+                });
+            }
+            return res.status(500).send({
+                message: 'Could not delete measure with id ' + uid
+            });
+        });
+};

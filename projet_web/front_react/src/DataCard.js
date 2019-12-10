@@ -19,7 +19,6 @@ class DataCard extends React.Component {
             })
             .catch(console.error);
 
-
     }
 
     render() {
