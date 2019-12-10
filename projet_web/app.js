@@ -28,9 +28,7 @@ var utilRouter = require('./routes/utilisateurs');
 import User from './models/user.model';
 import Sensors from './models/sensor.model';
 import Measure from './models/measure.model';
-
 const models={User,Sensors,Measure};
-
 app.use(async(req,res,next)=>{
   req.context={
     models,
@@ -41,13 +39,13 @@ app.use(async(req,res,next)=>{
 */
 //
 
-var db = mongoose.connection; 
-db.on('error', console.error.bind(console, 'Erreur lors de la connexion')); 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Erreur lors de la connexion'));
 db.once('open', function (){
-    console.log("Connexion à la base OK");
-    //console.log(db.collection("Sensor").find());
-  });
-    
+  console.log("Connexion à la base OK");
+  //console.log(db.collection("Sensor").find());
+});
+
 var app = express();
 
 // view engine setup

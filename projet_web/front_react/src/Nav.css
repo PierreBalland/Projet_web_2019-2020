@@ -2,7 +2,7 @@
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #00B7FF;
+    background: linear-gradient(to right, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 15%, rgba(33,180,226,1) 65%, rgba(183,222,237,1) 100%);
     font-style: oblique;
     border-radius: 10px;
 }

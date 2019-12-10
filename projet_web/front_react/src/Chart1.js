@@ -35,11 +35,11 @@ class Chart1 extends PureComponent {
         return (
 
             <BarChart
-                width={620}
-                height={300}
+                width={900}
+                height={320}
                 data={data}
                 margin={{
-                    top: 5, right: 30, left: 20, bottom: 5,
+                    top: 25, right: 30, left: 30, bottom: 5,
                 }}
 
             >
@@ -48,7 +48,7 @@ class Chart1 extends PureComponent {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
+
                 <Bar dataKey="uv" fill="#82ca9d" />
             </BarChart>
         );

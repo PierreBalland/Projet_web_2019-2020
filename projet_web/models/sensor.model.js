@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 var sensorSchema = new mongoose.Schema(
     {
-      _id:  mongoose.Schema.Types.ObjectId,
+        _id: {type: mongoose.Schema.Types.ObjectId,
+            auto: true},
       creationDate: String,
       location: String,
       userID: {
